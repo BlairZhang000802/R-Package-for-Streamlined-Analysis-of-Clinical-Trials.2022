@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/R-CMD-check.yaml)
+[![test-coverage](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/test-coverage.yaml)
+[![lint](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/lint.yaml/badge.svg)](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/lint.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/BlairZhang000802/bis620.2022/branch/main/graph/badge.svg)](https://app.codecov.io/gh/BlairZhang000802/bis620.2022?branch=main)
 <!-- badges: end -->

@@ -1,5 +1,5 @@
 test_that(
-  "",
+  "The accel_plot() returns a ggplot object.",
   {
     data(ukb_accel)
     p <-  ukb_accel[1:100, ] |>

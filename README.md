@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/BlairZhang000802/BIS620/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/BlairZhang000802/BIS620/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/BlairZhang000802/bis620.2022/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of bis620.2022 is to …
@@ -17,7 +17,7 @@ You can install the development version of bis620.2022 from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("BlairZhang000802/BIS620")
+devtools::install_github("BlairZhang000802/bis620.2022")
 ```
 
 ## Example

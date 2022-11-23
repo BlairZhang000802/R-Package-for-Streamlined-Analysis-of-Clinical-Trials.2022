@@ -22,7 +22,9 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/BlairZhang000802/bis620.2022/branch/main/graph/badge.svg)](https://app.codecov.io/gh/BlairZhang000802/bis620.2022?branch=main)
 <!-- badges: end -->
 
-The goal of bis620.2022 is to ...
+The goal of bis620.2022 is to
+1. compute frequency and spectral signature of accelerometry data by using Fast Fourier Transformation
+2. plot time series data based on accelerometry data with time range or frequency columns 
 
 ## Installation
 
@@ -37,23 +39,33 @@ devtools::install_github("BlairZhang000802/bis620.2022")
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
+```{r}
 library(bis620.2022)
 ## basic example code
+## import dataset ukb_accel
+data(ukb_accel)
+## compute frequency and spectral signature of the first 100 rows of ukb_accel
+ukb_accel[1:100, ] |>
+      spectral_signature()
+## you may also take log against frequency for different use if necessary
+ukb_accel[1:100, ] |>
+      spectral_signature(take_log = TRUE)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r cars}
-summary(cars)
+```{r}
+## plot the first 100 rows' value against time of ukb_accel
+ukb_accel[1:100, ] |>
+  accel_plot()
+## plot the spectural signature of the first 100 rows' value
+##  against frequency of ukb_accel
+ukb_accel[1:100, ] |>
+      spectral_signature() |>
+      accel_plot()
+## plot the spectural signature of the first 100 rows' value
+##  against log(frequency) of ukb_accel for better observation
+ukb_accel[1:100, ] |>
+      spectral_signature(take_log = TRUE) |>
+      accel_plot()
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

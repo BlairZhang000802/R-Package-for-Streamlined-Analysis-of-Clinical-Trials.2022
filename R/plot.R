@@ -1,4 +1,3 @@
-
 #' Plot UKBiobank Accelerometry Data
 #' This function plots UKBiobank accelerometry data.
 #' @param x an object inherited from data.frame. It is
@@ -22,6 +21,6 @@ accel_plot <- function(x) {
   x |>
     pivot_longer(-all_of(col)) |>
     ggplot(aes(x = {{col}}, y = value)) +
-      geom_line() +
-      facet_grid(name ~ .)
+    geom_line() +
+    facet_grid(name ~ .)
 }

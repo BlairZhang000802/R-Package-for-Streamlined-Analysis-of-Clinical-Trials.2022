@@ -1,5 +1,4 @@
 
-
 #' Get the Spectral Signature of Accelerometry Data
 #'
 #' The spectral signature is calculated by taking the modulus of the
@@ -19,7 +18,7 @@ spectral_signature <- function(x, take_log = FALSE, inverse = TRUE) {
 
   ret <- map_dfc(
     x |> select(X, Y, Z),
-    ~ fft(.x, inverse <- inverse) |> Mod()
+    ~ fft(.x, inverse = inverse) |> Mod()
   )
   if (take_log) {
     ret <- ret |>

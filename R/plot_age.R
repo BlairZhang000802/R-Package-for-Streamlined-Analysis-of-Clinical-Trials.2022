@@ -16,7 +16,7 @@
 #' @importFrom dplyr select group_by summarize distinct n
 #' @importFrom tidyr drop_na
 #' @importFrom ggplot2 aes ggplot geom_histogram stat_bin scale_x_continuous
-#' facet_wrap theme_minimal ggtitle element_text stat
+#' facet_wrap theme_minimal ggtitle element_text
 #' @importFrom tidyr %>%
 #' @examples
 #' data(full_data)
@@ -60,7 +60,7 @@ plot_age <- function(df, subject_id_col, age_col,
     plt <- ggplot(age_distribution, aes(x = {{age_col_symbol}})) +
       geom_histogram(color = "lightblue", breaks = label_intervals) +
       stat_bin(breaks = label_intervals, geom = "text",
-               aes(label = stat(count)), vjust = 0, size = 2.5) +
+               aes(label = ggplot2::after_stat(count)), vjust = 0, size = 2.5) +
       scale_x_continuous(breaks = label_intervals) +
       theme_minimal() +
       ggtitle("Distribution of Age Faceted by Study Arm") +

@@ -59,7 +59,6 @@ predictive_var <- function(df, subject_id_col, death_col, treat_col,
       select({{subject_id_symbol}}, {{var_col_symbol}},
              {{treat_col_symbol}}, {{death_col_symbol}}) %>%
       distinct()
-    var_distribution
 
 
     if (interaction) {

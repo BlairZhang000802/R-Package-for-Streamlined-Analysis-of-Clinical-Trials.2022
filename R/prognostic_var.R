@@ -59,9 +59,9 @@ prognostic_var <- function(df, subject_id_col, treat_col, control_val,
     select({{subject_id_symbol}}, {{death_col_symbol}}, {{var_col_symbol}}) %>%
     distinct()
 
-  death_vector <- unlist(control_group[, death_col])
-  var_vector <- unlist(control_group[, var_col])
-  mylogit <- glm(as.factor(death_vector) ~ var_vector,
+  mylogit <- glm(formula = as.formula(paste("as.factor(", death_col, ") ~ "
+                                            , var_col)),
+                 data = control_group,
                  family =  binomial(link = "logit"))
 
   return(mylogit)

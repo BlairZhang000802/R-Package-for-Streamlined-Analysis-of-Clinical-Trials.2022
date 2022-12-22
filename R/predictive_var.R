@@ -60,18 +60,17 @@ predictive_var <- function(df, subject_id_col, death_col, treat_col,
              {{treat_col_symbol}}, {{death_col_symbol}}) %>%
       distinct()
 
-    death_vector <- unlist(var_distribution[, death_col])
-    treat_vector <- unlist(var_distribution[, treat_col])
-    var_vector <- unlist(var_distribution[, var_col])
-
     if (interaction) {
-      mylogit <- glm(as.factor(death_vector) ~
-                      var_vector * as.factor(treat_vector),
+      mylogit <- glm(as.formula(paste("as.factor(", death_col, ") ~ "
+                                      , var_col,
+                                "*", "as.factor(", treat_col, ")")),
+                     data = var_distribution,
                      family =  binomial(link = "logit"))
     } else {
-      mylogit <- glm(as.factor(death_vector) ~
-                       var_vector +
-                       as.factor(treat_vector),
+      mylogit <- glm(as.formula(paste("as.factor(", death_col, ") ~ "
+                                      , var_col,
+                                      "+", "as.factor(", treat_col, ")")),
+                     data = var_distribution,
                      family =  binomial(link = "logit"))
     }
   } else {
@@ -79,11 +78,9 @@ predictive_var <- function(df, subject_id_col, death_col, treat_col,
       select({{subject_id_symbol}},
              {{treat_col_symbol}}, {{death_col_symbol}}) %>%
       distinct()
-
-    death_vector <- unlist(var_distribution[, death_col])
-    treat_vector <- unlist(var_distribution[, treat_col])
-    mylogit <- glm(as.factor(death_vector) ~
-                     as.factor(treat_vector),
+    mylogit <- glm(as.formula(paste("as.factor(", death_col, ") ~ ",
+                                    "as.factor(", treat_col, ")")),
+                   data = var_distribution,
                    family =  binomial(link = "logit"))
   }
   ret <- mylogit

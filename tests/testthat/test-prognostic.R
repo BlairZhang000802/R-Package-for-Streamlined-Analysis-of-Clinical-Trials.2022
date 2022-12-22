@@ -100,12 +100,10 @@ test_that(
       select(SUBJID, DEATH_FLAG, ATRT, DIAGTYPE) %>%
       distinct()
 
-    death_vector <- unlist(test[, "DEATH_FLAG"])
-    var_vector <- unlist(test[, "DIAGTYPE"])
-
-    expect <- glm(as.factor(death_vector) ~
-                    var_vector,
-                  family = binomial(link = "logit"))
+    expect <- glm(formula = as.formula(
+      paste("as.factor(", "DEATH_FLAG", ") ~ ", "DIAGTYPE")),
+      data = test,
+      family =  binomial(link = "logit"))
     expect_true(identical(l$coefficients, expect$coefficients))
   }
 )
@@ -127,12 +125,10 @@ test_that(
       select(SUBJID, DEATH_FLAG, ATRT, AGE) %>%
       distinct()
 
-    death_vector <- unlist(test[, "DEATH_FLAG"])
-    var_vector <- unlist(test[, "AGE"])
-
-    expect <- glm(as.factor(death_vector) ~
-                    var_vector,
-                  family = binomial(link = "logit"))
+    expect <- glm(formula = as.formula(
+      paste("as.factor(", "DEATH_FLAG", ") ~ ", "AGE")),
+                  data = test,
+                  family =  binomial(link = "logit"))
     expect_true(identical(l$coefficients, expect$coefficients))
   }
 )

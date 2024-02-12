@@ -12,11 +12,6 @@
 coverage](https://codecov.io/gh/BlairZhang000802/bis620.2022/branch/main/graph/badge.svg)](https://app.codecov.io/gh/BlairZhang000802/bis620.2022?branch=main)
 <!-- badges: end -->
 
-The goal of bis620.2022 is to 1. compute frequency and spectral
-signature of accelerometry data by using Fast Fourier Transformation 2.
-plot time series data based on accelerometry data with time range or
-frequency columns
-
 ## Installation
 
 You can install the development version of bis620.2022 from
